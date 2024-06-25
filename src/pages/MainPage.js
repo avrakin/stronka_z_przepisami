@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Box, Button, Grid, TextField } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import RecipeCard from '../components/RecipeCard';
 import axios from 'axios';
+import SearchBar from '../components/SearchBar';
 
 const recipesApiId = process.env.REACT_APP_RECIPES_API_ID;
 const recipesApiKey = process.env.REACT_APP_RECIPES_API_KEY;
@@ -34,27 +35,12 @@ function MainPage() {
 
   return (
     <Box>
-      <Box sx={{ display: 'flex', width: '90%', gap: 1, mt: 2, mx: 'auto', maxWidth: '600px' }}>
-        <TextField
-          id="outlined-basic"
-          label="Search"
-          variant="outlined"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          onKeyDown={onEnterClick}
-          fullWidth
-        />
-        <Button
-          variant="contained"
-          onClick={onClickSearch}
-          sx={{ whiteSpace: 'nowrap' }}
-        >
-          Search
-        </Button>
+      <Box sx={{ display: 'flex', width: '90%', gap: 1, mt: 2, mx: 'auto', maxWidth: '720px' }}>
+        <SearchBar search={search} setSearch={setSearch} onEnterClick={onEnterClick} onClickSearch={onClickSearch} />
       </Box>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} p={2}>
         {data?.hits.map((recipe, index) => (
-          <Grid item xs={12} sm={4} md={3} key={index}>
+          <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={index}>
             <RecipeCard recipe={recipe} />
           </Grid>
         ))}
