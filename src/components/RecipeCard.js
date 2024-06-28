@@ -26,7 +26,7 @@ const RecipeCard = ({ recipe }) => {
                 </Typography>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%', mb: 1 }}>
                     <Typography variant="body1" color="text.primary">
-                        {recipe.recipe.calories.toFixed(0)} kcal
+                        {recipe.recipe.calories?.toFixed(0)} kcal
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                         Ingredients: {recipe.recipe.ingredientLines.length}

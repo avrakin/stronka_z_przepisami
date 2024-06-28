@@ -38,7 +38,7 @@ const RecipePage = () => {
                             {recipe.recipe.label}
                         </Typography>
                         <Typography variant="body1" color="text.primary" mb={1}>
-                            {recipe.recipe.calories.toFixed(0)} kcal
+                            {recipe.recipe.calories?.toFixed(0)} kcal
                         </Typography>
                         <Typography variant="body2" color="text.secondary" mb={1}>
                             Ingredients: {recipe.recipe.ingredientLines.length}
@@ -67,14 +67,16 @@ const RecipePage = () => {
                         <Typography variant="body1" color="text.secondary" mb={1}>
                             Total time: {recipe.recipe.totalTime} minutes
                         </Typography>
+                        {recipe.recipe.totalCO2Emissions !== null && recipe.recipe.totalCO2Emissions !== undefined &&
                         <Typography variant="body1" color="text.secondary" mb={1}>
-                            CO2 Emissions: {recipe.recipe.totalCO2Emissions.toFixed(0)} g
+                        CO2 Emissions: {Number(recipe.recipe.totalCO2Emissions)?.toFixed(0)} g
                         </Typography>
+                        }
                         <Typography variant="body1" color="text.secondary" mb={1}>
                             CO2 Emissions class: {recipe.recipe.co2EmissionsClass}
                         </Typography>
                         <Typography variant="body1" color="text.secondary" mb={1}>
-                            Total weight: {recipe.recipe.totalWeight.toFixed(0)} g
+                            Total weight: {recipe.recipe.totalWeight?.toFixed(0)} g
                         </Typography>
                         <TableContainer component={Paper}>
                             <Table>
@@ -88,7 +90,7 @@ const RecipePage = () => {
                                     {Object.entries(recipe.recipe.totalNutrients).map(([key, value]) => (
                                         <TableRow key={key}>
                                             <TableCell>{value.label}</TableCell>
-                                            <TableCell>{value.quantity.toFixed(2)} {value.unit}</TableCell>
+                                            <TableCell>{value.quantity?.toFixed(2)} {value.unit}</TableCell>
                                         </TableRow>
                                     ))}
                                 </TableBody>

@@ -1533,7 +1533,7 @@ const RecipeDialog = ({ open, handleClickOpen, handleClose, recipe }) => {
                     </Typography>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%', mb: 1 }}>
                         <Typography variant="body1" color="text.primary">
-                            {recipe.recipe.calories.toFixed(0)} kcal
+                            {recipe.recipe.calories?.toFixed(0)} kcal
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                             Ingredients: {recipe.recipe.ingredientLines.length}
@@ -1563,14 +1563,16 @@ const RecipeDialog = ({ open, handleClickOpen, handleClose, recipe }) => {
                     <Typography variant="body1" color="text.secondary" mb={1}>
                         Total time: {recipe.recipe.totalTime} minutes
                     </Typography>
+                    {recipe.recipe.totalCO2Emissions !== null && recipe.recipe.totalCO2Emissions !== undefined &&
                     <Typography variant="body1" color="text.secondary" mb={1}>
-                        CO2 Emissions: {recipe.recipe.totalCO2Emissions.toFixed(0)} g
+                    CO2 Emissions: {Number(recipe.recipe.totalCO2Emissions)?.toFixed(0)} g
                     </Typography>
+                    }
                     <Typography variant="body1" color="text.secondary" mb={1}>
                         CO2 Emissions class: {recipe.recipe.co2EmissionsClass}
                     </Typography>
                     <Typography variant="body1" color="text.secondary" mb={1}>
-                        Total weight: {recipe.recipe.totalWeight.toFixed(0)} g
+                        Total weight: {recipe.recipe.totalWeight?.toFixed(0)} g
                     </Typography>
 
                     <Typography variant="h6" color="text.secondary" mb={1}>
